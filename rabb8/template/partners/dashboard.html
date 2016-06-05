@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+{%if user%}
+<table>
+    {%for i in collection%}
+    <tr>
+        <td>
+            <a><img src='{{i["image_url"]}}' style='width:150px; height:150px;'/></a>
+        </td>
+        <td>
+            {{i['source_url']}}<br/>
+            {{i['image_url']}}<br/>
+            Points: XXX
+        </td>
+        <td>
+            Activate / Delete
+        </td>
+    </tr>
+    {%end for%}
+</table>
+{%else%}
+    You need to login with Gmail or Facebook first.
+{%end if%}
+</body>
+</html>

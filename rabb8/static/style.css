@@ -1,0 +1,310 @@
+
+body{
+    font-family: "Arial", "Helvetica", "sans-serif";
+    background-color: #eee;
+    text-align: center;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+#fb_like{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 500px;
+}
+#twitter_share{
+    position: absolute;
+    margin-top: 9px;
+    margin-left: 700px;
+}
+
+
+#header{
+    min-height: 132px;
+    background-color: #fff;
+    text-align: left;
+}
+/* for Internet Explorer */
+/*\*/
+* html #header {
+    height: 132px;
+}
+/**/
+
+#header #login{
+    position: relative;
+    top: 3px;
+    left: 900px;
+}
+
+#header #login .facebook{
+    width: 32px;
+    height: 32px;
+    background-image: url(/static/auth/facebook.png);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#header #login .google{
+    width: 32px;
+    height: 32px;
+    background-image: url(/static/auth/google.png);
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+#header #login .logout{
+    line-height: 32px;
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: right;
+    width: 80px;
+}
+
+.ad-gallery .ad-nav .ad-thumbs .ad-thumb-list img{
+    height: 66px;
+}
+
+#menu{
+    line-height: 40px;
+    height: 40px;
+    text-align: left;
+}
+
+#selector{
+    text-align: left;
+}
+
+#selector #select{
+    background-color: #eee;
+    height: 400px;
+    margin: 10px;
+}
+
+#selector #board_body{
+    width: 350px;
+    height: 200px;
+}
+
+.collection{
+    margin: 10px;
+    text-align: left;
+}
+
+.collection .body{
+}
+
+.collection .likes{
+    color: #999;
+}
+
+#overlay{
+    background-color: #ccc;
+    filter:alpha(opacity=80);
+    opacity: 0.8;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 90;
+}
+
+#message{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 100;
+    text-align: center;
+    width: 500px;
+    margin-left: -250px;
+    padding-top: 10px;
+    height: 30px;
+    overflow: none;
+    border: none 1px #F0C36D;
+    border-bottom: solid 1px #F0C36D;
+    border-left: solid 1px #F0C36D;
+    border-right: solid 1px #F0C36D;
+    background-color: #F9EDBE;
+
+    -moz-border-bottom-right-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+}
+
+
+#spotlight_box{
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    z-index: 100;
+    background-color: #fff;
+    width: 800px;
+    margin-left: -400px;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+}
+
+#spotlight_box #close_btn{
+    position: fixed;
+    top: 10px;
+    margin-left: 740px;
+    z-index: 110;
+    display: block;
+}
+
+#spotlight_box #like{
+    position: fixed;
+    top: 20px;
+    margin-left: 810px;
+    z-index: 110;
+    display: block;
+}
+
+#spotlight_box #edit{
+    position: fixed;
+    top: 300px;
+    margin-left: 810px;
+    z-index: 120;
+    display: block;
+}
+
+#spotlight_box #delete{
+    position: fixed;
+    top: 330px;
+    margin-left: 810px;
+    z-index: 130;
+    display: block;
+}
+
+#spotlight_box #spotlight_fb_like{
+    position: fixed;
+    top: 50px;
+    margin-left: 810px;
+    z-index: 130;
+}
+#spotlight_box #spotlight_twitter_share{
+    position: fixed;
+    top: 80px;
+    margin-left: 810px;
+    z-index: 120;
+}
+
+#spotlight_box #spotlight{
+    margin: 10px;
+    overflow-y: hidden;
+}
+
+#spotlight_box #body{
+    margin: 0 10px;
+    text-align: left;
+}
+
+#spotlight_box #source{
+    margin: 0 10px;
+    text-align: left;
+}
+
+#spotlight_box #comments{
+    margin: 10px 10px;
+    text-align: left;
+}
+
+#spotlight_box #comment_box{
+    margin: auto 10px;
+    text-align: left;
+}
+
+#spotlight_box #comment_box textarea{
+    width: 770px;
+    height: 50px;
+}
+
+#create_box{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    z-index: 100;
+    background-color: #fff;
+    padding: 10px;
+    width: 500px;
+    margin-left: -250px;
+    height: 300px;
+    overflow: auto;
+    border: solid 3px #ccc;
+}
+
+#edit_box{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    z-index:100;
+    background-color: #fff;
+    padding: 10px;
+    width: 500px;
+    margin-left: -250px;
+    height: 300px;
+    overflow: auto;
+    border: solid 3px #ccc;
+}
+
+#delete_board{
+    margin: 0 0 0 350px;
+}
+
+
+#popup #login{
+    position: relative;
+    top: 3px;
+    left: 500px;
+}
+
+#popup #login .facebook{
+    width: 32px;
+    height: 32px;
+    background-image: url(/static/auth/facebook.png);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#popup #login .google{
+    width: 32px;
+    height: 32px;
+    background-image: url(/static/auth/google.png);
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+
+#popup #login .logout{
+    line-height: 32px;
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: right;
+    width: 80px;
+}
+
+.loading{
+    color: #fff;
+    font-size: 9px;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    background-color: #c00;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 18px
+}

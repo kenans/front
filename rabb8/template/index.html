@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    <title>Rabb8</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Framework CSS -->
+    <!--link rel="stylesheet" href="http://github.com/joshuaclayton/blueprint-css/raw/master/blueprint/screen.css" type="text/css" media="screen, projection" /-->
+    <!--link rel="stylesheet" href="http://github.com/joshuaclayton/blueprint-css/raw/master/blueprint/print.css" type="text/css" media="print" /-->
+    <!--[if lt IE 8]><link rel="stylesheet" href="http://github.com/joshuaclayton/blueprint-css/raw/master/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+    <link rel="stylesheet" href="/static/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/static/blueprint/print.css" type="text/css" media="print" />
+    <!--[if lt IE 8]><link rel="stylesheet" href="/static/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" type="text/css" href="/static/jquery.ad-gallery.css" />
+
+    <link rel="stylesheet" href="/static/style{{version}}.css" type="text/css" media="screen, projection" />
+
+    <style></style>
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="header" class="">
+    <div class="container prepend-6">
+        <script type="text/javascript"><!--
+        google_ad_client = "ca-pub-7398165263096219";
+        /* leaderboard */
+        google_ad_slot = "6113177405";
+        google_ad_width = 728;
+        google_ad_height = 90;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </div>
+
+    <div class="container prepend-1 append-1">
+        {#% include "include/menu.html" %#}
+        <div id="fb_like" class="fb-like" data-href="http://rabb8.com/" data-send="true" data-layout="button_count" data-width="160" data-show-faces="true"></div>
+
+        <div id="twitter_share">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rabb8.com/"></a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+
+        <div id="login" class="span-4 last">
+    {% if user %}
+            <div class="logout"><a href="/auth/logout">Logout</a></div>
+    {% else %}
+            <div class="facebook"></div>
+            <div class="google"></div>
+    {% end if %}
+        </div>
+
+    {% if user %}
+        <div id="menu">
+            <input id="url" class="text" type="text" value="http://"/>
+            <input id="get" class="" type="button" value="Get" />
+
+            <input id="save" class="save hide" type="button" value="Post" />
+
+            <input id="close" class="close hide" type="button" value="Cancel" />
+        </div>
+
+        <div id="selector" class="hide">
+            <div id="select" class="ad-gallery span-10">
+                <div class="ad-image-wrapper"></div>
+                <!--div class="ad-controls"></div-->
+                <div class="ad-nav">
+                    <div class="ad-thumbs">
+                        <ul class="ad-thumb-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="span-8">
+                <select id="boards" class="">
+        {% for i in categories %}
+                    <option value="category{{i["id"]}}">{{i["name"]}}</option>
+        {% end for %}
+                </select>
+                <input id="edit_board" type="button" class="" value="Edit" />
+
+                <textarea id="board_body" class=""></textarea>
+
+                <input type="button" class="save" value="Post" />
+                <input type="button" class="close" value="Cancel" />
+            </div>
+        </div>
+    {% end if %}
+    </div>
+</div>
+
+{% if current_user %}
+<div id="content" style="margin:auto; width:1400px; min-width:1120px;">
+    <div id="column1" class="span-7" style="background-color:#fff;"></div>
+    <div id="column2" class="span-7" style="background-color:#fff;"></div>
+    <div id="column3" class="span-7" style="background-color:#fff;"></div>
+    <div id="column4" class="span-7" style="background-color:#fff;"></div>
+    <div id="column5" class="span-7 last" style="background-color:#fff;"></div>
+</div>
+{% else %}
+<div id="content" style="margin:auto; width:1400px; min-width:1120px;">
+    <div id="column1" class="span-7" style="background-color:#fff;">
+    {% for i in range(0, len(handler.collection), 5) %}
+    <div id="collection{{ handler.collection[i]['id'] }}" class="collection">
+        <a href="/{{ handler.collection[i]['id'] }}"><img src="{{ handler.collection[i]['image_url'] }}" style="width: 248px;" /></a>
+        <div class="body">{{ handler.collection[i]['body'] }}</div>
+        <div class="likes">{{ handler.collection[i]['likes'] }} likes</div>
+    </div>
+    {% end for %}
+    </div>
+    <div id="column2" class="span-7" style="background-color:#fff;">
+    {% for i in range(1, len(handler.collection), 5) %}
+    <div id="collection{{ handler.collection[i]['id'] }}" class="collection">
+        <a href="/{{ handler.collection[i]['id'] }}"><img src="{{ handler.collection[i]['image_url'] }}" style="width: 248px;" /></a>
+        <div class="body">{{ handler.collection[i]['body'] }}</div>
+        <div class="likes">{{ handler.collection[i]['likes'] }} likes</div>
+    </div>
+    {% end for %}
+    </div>
+    <div id="column3" class="span-7" style="background-color:#fff;">
+    {% for i in range(2, len(handler.collection), 5) %}
+    <div id="collection{{ handler.collection[i]['id'] }}" class="collection">
+        <a href="/{{ handler.collection[i]['id'] }}"><img src="{{ handler.collection[i]['image_url'] }}" style="width: 248px;" /></a>
+        <div class="body">{{ handler.collection[i]['body'] }}</div>
+        <div class="likes">{{ handler.collection[i]['likes'] }} likes</div>
+    </div>
+    {% end for %}
+    </div>
+    <div id="column4" class="span-7" style="background-color:#fff;">
+    {% for i in range(3, len(handler.collection), 5) %}
+    <div id="collection{{ handler.collection[i]['id'] }}" class="collection">
+        <a href="/{{ handler.collection[i]['id'] }}"><img src="{{ handler.collection[i]['image_url'] }}" style="width: 248px;" /></a>
+        <div class="body">{{ handler.collection[i]['body'] }}</div>
+        <div class="likes">{{ handler.collection[i]['likes'] }} likes</div>
+    </div>
+    {% end for %}
+    </div>
+    <div id="column5" class="span-7 last" style="background-color:#fff;">
+    {% for i in range(4, len(handler.collection), 5) %}
+    <div id="collection{{ handler.collection[i]['id'] }}" class="collection">
+        <a href="/{{ handler.collection[i]['id'] }}"><img src="{{ handler.collection[i]['image_url'] }}" style="width: 248px;" /></a>
+        <div class="body">{{ handler.collection[i]['body'] }}</div>
+        <div class="likes">{{ handler.collection[i]['likes'] }} likes</div>
+    </div>
+    {% end for %}
+    </div>
+</div>
+{% end if %}
+
+
+<div id="spotlight_box" class="hide">
+    <input id="close_btn" type="image" src="/static/close_box_red.png" value=""/>
+    <input id="like" type="button" value="LIKE"/>
+    <input id="edit" type="button" class="hide" value="EDIT"/>
+    <input id="delete" type="button" class="hide" value="DEL"/>
+
+    <!--div  class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="160" data-show-faces="true"></div-->
+    <div id="spotlight_fb_like"></div>
+    <div id="spotlight_twitter_share"></div>
+
+    <div id="spotlight">
+        <div id="show" class="ad-gallery hide">
+            <div class="ad-image-wrapper"></div>
+            <!--div class="ad-controls"></div-->
+            <div class="ad-nav hide">
+                <div class="ad-thumbs">
+                    <ul class="ad-thumb-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="body"></div>
+    <div id="source">
+    <label>Go to:</label> <a id="source_url"></a>
+    </div>
+
+    <div id="comments"></div>
+
+    {% if user %}
+    <div id="comment_box">
+    <textarea id=""></textarea>
+    <input id="comment_post" type="button" value="Comment"/>
+    </div>
+    {% end if %}
+
+</div>
+
+<div id="create_box" class="hide">
+    <h2>Create Board</h2>
+
+    <label>Board Name</label>
+    <br/>
+    <input type="text" class="text board_name" />
+    <br/><br/>
+
+    <label>Category</label>
+    <br/>
+    <select class="title categories">
+    {%for i in categories%}
+        <option value="category{{i["id"]}}">{{i["name"]}}</option>
+    {% end for %}
+    </select>
+    <br/><br/><br/>
+
+    <input id="create_board" type="button" style="margin:0;" value="Create" />
+</div>
+
+<div id="edit_box" class="hide">
+    <h2>Edit Board</h2>
+
+    <label>Board Name</label>
+    <br/>
+    <input type="hidden" class="board_id" value="" />
+    <input type="text" class="text board_name" />
+    <br/><br/>
+
+    <label>Category</label>
+    <br/>
+    <select class="title categories">
+    {%for i in categories%}
+        <option value="category{{i["id"]}}">{{i["name"]}}</option>
+    {% end for %}
+    </select>
+    <br/><br/><br/>
+
+    <input id="save_board" type="button" style="margin:0;" value="Save" />
+    <input id="cancel_board" type="button" style="margin:0;" value="Canecl" />
+    <br/><br/><br/>
+
+    <input type="button" id="new_board" value="New Board" />
+    <input type="button" id="delete_board" value="Delete" class="hide"/>
+
+    <!--input id="delete_board" type="button" value="Delete" /-->
+</div>
+
+<div id="city_box" class="hide">
+    <h2>Select your city</h2>
+
+    <label>Are you from Singapore?</label>
+    <br/>
+    <input type="hidden" class="board_id" value="" />
+    <input type="text" class="text board_name" />
+    <br/><br/>
+
+    <label>Category</label>
+    <br/>
+    <select class="title categories">
+    {%for i in cities%}
+        <option value="category{{i["id"]}}">{{i["name"]}}</option>
+    {% end for %}
+    </select>
+    <br/><br/><br/>
+
+    <input id="save_board" type="button" style="margin:0;" value="Save" />
+    <input id="cancel_board" type="button" style="margin:0;" value="Canecl" />
+
+    <!--input id="delete_board" type="button" value="Delete" /-->
+</div>
+
+<div id="overlay" class="hide"></div>
+
+<div id="message" class="hide"></div>
+
+{#% include "include/footer.html" %#}
+{#% include "include/ga.html" %#}
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore-min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.1/backbone-min.js"></script>
+
+<script type="text/javascript" src="/static/jquery.ad-gallery.js"></script>
+<script type="text/javascript" src="/static/jquery.endless-scroll.js"></script>
+
+<script type="text/javascript" src="/static/main{{version}}.js"></script>
+
+<script type="text/javascript">
+    var API_WALL = "/api/wall";
+    var next = "{{next}}";
+    var current_user_id = 0;
+    var current_city = null;
+    var supported_cities = [];
+    var initial_collection = [];
+{%if user%}
+    current_user_id = {{user["id"]}};
+    current_city = '{{user.get("city", "")}}';
+{% else %}
+    {% autoescape None %}
+    {% for i in handler.collection %}
+    initial_collection.push({{json_encode(i)}});
+    {% end for %}
+{%end if%}
+
+{%for i in cities%}
+    supported_cities.push('{{i["name"]}}');
+{% end for %}
+</script>
+
+<script type="text/template" id="image-template">
+<li>
+    <a href="<%= url %>">
+    <img src="<%= url %>" class="image<%= id %>" />
+    </a>
+</li>
+</script>
+
+<script type="text/template" id="collection-template">
+<div id="collection<%= id %>" class="collection">
+    <a href="#<%= id %>"><img src="<%= image_url %>" style="width: <%= thumb_width%>px; height: <%= thumb_height%>px;" /></a>
+    <div class="body"><%= body %></div>
+    <div class="likes"><%= likes %> likes</div>
+</div>
+</script>
+
+<script type="text/template" id="option-template">
+    <option value="<%= value %>"><%= name %></option>
+</script>
+
+<script type="text/template" id="comment-template">
+<div id="comment<%= id %>" class="comment">
+<%= comment %>
+</div>
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30024862-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</body>
+</html>

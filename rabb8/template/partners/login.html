@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+{%if user%}
+    <form accept-charset="UTF-8" action="/partners/login" method="post">
+        <h2>Partner Log In</h2>
+        <label>Password</label>
+        <input name="password" size="30" type="password" />
+        <input type="submit" value="Log In" />
+    </form>
+{%else%}
+    You need to login with Gmail or Facebook first.
+{%end if%}
+
+</body>
+</html>

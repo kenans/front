@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+div img {
+  height: auto;
+  width: auto;
+  margin: 10px;
+}
+
+div.column {
+  width: 270px;
+  float: left;
+}
+
+</style>
+</head>
+<body>
+
+<div ng-app='myApp' ng-controller='DemoController'>
+<div id="content" infinite-scroll="loadMore()">
+  <div id="column1" class="column">
+    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+  </div>
+  <div id="column2" class="column">
+    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+  </div>
+</div>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="./ng-infinite-scroll.js"></script>
+<script>
+var myApp = angular.module('myApp', ['infinite-scroll']);
+myApp.controller('DemoController', function($scope) {
+  $scope.images = [1, 2];
+
+  $scope.loadMore = function() {
+    var last = $scope.images[$scope.images.length - 1];
+    for(var i = 1; i <= 2; i++) {
+      $scope.images.push(last + i);
+    }
+  };
+});
+</script>
+</body>
+</html>
